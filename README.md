@@ -11,7 +11,7 @@ arm-controller  ──/tmp/arm_pipe──►  robot-arm
   (sequences)      (named pipe)     (3D renderer)
 ```
 
-This architecture mirrors how ROS2 nodes communicate — decoupled processes exchanging messages through channels, where the renderer and controller can be developed, restarted, and debugged independently.
+This architecture mirrors how ROS2 nodes communicate using decoupled processes exchanging messages through channels, where the renderer and controller can be developed, restarted, and debugged independently.
 
 ## Architecture
 
@@ -31,11 +31,11 @@ vendor/
 
 ### Kinematics
 
-Each joint holds a rotation (rx, ry) and a segment length. `jointPositions()` builds a chain of 4×4 transformation matrices — one per joint — multiplying them together from base to end effector. Each matrix encodes the cumulative rotation and translation up to that point, so joint 2 automatically inherits the orientation of joints 0 and 1. This is standard forward kinematics (FK).
+Each joint holds a rotation (rx, ry) and a segment length. `jointPositions()` builds a chain of 4×4 transformation matrices, one per joint, multiplying them together from base to end effector. Each matrix encodes the cumulative rotation and translation up to that point, so joint 2 automatically inherits the orientation of joints 0 and 1. This is standard forward kinematics (FK).
 
 ### IPC
 
-The controller opens `/tmp/arm_pipe` for writing. The renderer opens it for reading (`O_NONBLOCK` — keeps running without a controller). Each `send()` call writes 24 bytes (3 joints × 2 floats × 4 bytes) into the pipe. The renderer reads incoming commands every frame and smoothly interpolates toward the target angles using a framerate-independent lerp.
+The controller opens `/tmp/arm_pipe` for writing. The renderer opens it for reading (`O_NONBLOCK` keeps running without a controller). Each `send()` call writes 24 bytes (3 joints × 2 floats × 4 bytes) into the pipe. The renderer reads incoming commands every frame and smoothly interpolates toward the target angles using a framerate-independent lerp.
 
 ## Dependencies
 
@@ -49,7 +49,7 @@ sudo dnf install gcc-c++ cmake libXinerama-devel libXcursor-devel libXi-devel li
 sudo apt install g++ cmake libxinerama-dev libxcursor-dev libxi-dev libxrandr-dev
 ```
 
-All other dependencies (raylib, GLM) are vendored in the `vendor/` directory and compiled with the project — no system installation required.
+All other dependencies (raylib, GLM) are vendored in the `vendor/` directory and compiled with the project, no system installation required.
 
 ## Build
 
