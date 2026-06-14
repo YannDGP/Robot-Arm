@@ -93,7 +93,8 @@ In two separate terminals:
 | Input | Action |
 |-------|--------|
 | Hold `Shift` | Free camera (right-click + drag)|
-| WASD/ZQSD | Free movement |
+| Hold `Shift`+ `WASD`/`ZQSD` | Free movement |
+| Hold `Shift`+ `Ctrl`/`Spacebar`| Up / Down |
 | `ESC` | Quit |
 
 ## Writing motion sequences (controller-angles)
