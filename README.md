@@ -83,7 +83,7 @@ In two separate terminals:
 # Terminal 2 — start controller for Angles
 ./build/arm-controller-angles
 
-# Terminal 2 — start controller for Inverse Kinetics
+# Terminal 2 — start controller for Inverse Kinematics
 ./build/arm-controller-ik
 
 ```
