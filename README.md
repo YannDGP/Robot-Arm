@@ -120,3 +120,9 @@ In `src/controller-ik/main.cpp`, each `moveTo()` defines a target position in wo
 ```cpp
 //           x      y      z     ms
 moveTo(fd,  4.0f,  2.5f,  0.0f, 1500);
+```
+
+- `x` — target position along the left/right axis in world space
+- `y` — target position along the up/down axis in world space
+- `z` — target position along the front/back axis in world space
+- `ms` — time before next command in milliseconds
