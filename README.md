@@ -113,9 +113,6 @@ send(fd,   0.0f,   0.0f,    0.0f,  0.0f,    0.0f,  0.0f,   1000);
 
 Rotations are relative to the parent joint. The renderer interpolates smoothly to each target.
 
-Voici le bloc complet mis à jour pour la section de l'Inverse Kinematics, rédigé exactement avec la même structure et le même style de commentaires et d'explications que ton bloc pour la Forward Kinematics :
-Markdown
-
 ### Inverse Kinematics (controller-ik)
 
 In `src/controller-ik/main.cpp`, each `moveTo()` defines a target position in world space:
