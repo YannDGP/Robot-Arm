@@ -69,7 +69,7 @@ cmake --build build
 To rebuild only the controller after modifying sequences:
 
 ```bash
-cmake --build build --target arm-controller
+cmake --build build --target arm-controller-(angles/ik)
 ```
 
 ## Run
