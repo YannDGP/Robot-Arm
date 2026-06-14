@@ -7,8 +7,8 @@ Two independent executables communicate in real time:
 - `arm-controller` — control program, sends motion sequences
 
 ```
-arm-controller  ──/tmp/arm_pipe──►  robot-arm
-  (sequences)      (named pipe)     (3D renderer)
+arm-controller ──> tmp/arm_pipe ──> robot-arm
+ (sequences)       (named pipe)   (3D renderer)
 ```
 
 This architecture mirrors how ROS2 nodes communicate using decoupled processes exchanging messages through channels, where the renderer and controller can be developed, restarted, and debugged independently.
