@@ -1,0 +1,2 @@
+/usr/bin/ar qc libik-solver.a "CMakeFiles/ik-solver.dir/src/IKSolver.cpp.o"
+/usr/bin/ranlib libik-solver.a

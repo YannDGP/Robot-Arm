@@ -6,5 +6,5 @@ CXX_DEFINES = -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP
 
 CXX_INCLUDES = -I"/mnt/steamusb/Projet C++/robot-arm/src" -I"/mnt/steamusb/Projet C++/robot-arm/vendor/raylib/src" -I"/mnt/steamusb/Projet C++/robot-arm/vendor/glm"
 
-CXX_FLAGS = -O3 -DNDEBUG -std=c++17
+CXX_FLAGS = -std=c++17
 

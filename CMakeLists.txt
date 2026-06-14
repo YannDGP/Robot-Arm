@@ -13,21 +13,30 @@ add_subdirectory(vendor/raylib)
 # GLM (header-only)
 add_subdirectory(vendor/glm)
 
-# Executable
+# ── Renderer ────────────────────────────────────────────────────────────────
 add_executable(robot-arm
     src/main.cpp
     src/Arm.cpp
 )
-
 target_include_directories(robot-arm PRIVATE src)
+target_link_libraries(robot-arm PRIVATE raylib glm::glm)
 
-target_link_libraries(robot-arm PRIVATE
-    raylib
-    glm::glm
-)
-
-add_executable(arm-controller
+# ── Angle controller (original, unchanged) ──────────────────────────────────
+add_executable(arm-controller-angles
     src/controller/main.cpp
 )
+target_include_directories(arm-controller-angles PRIVATE src)
 
-target_include_directories(arm-controller PRIVATE src)
+# ── IK Solver (static lib, GLM only, no raylib) ─────────────────────────────
+add_library(ik-solver STATIC
+    src/IKSolver.cpp
+)
+target_include_directories(ik-solver PUBLIC src)
+target_link_libraries(ik-solver PUBLIC glm::glm)
+
+# ── IK controller ───────────────────────────────────────────────────────────
+add_executable(arm-controller-ik
+    src/controller-ik/main.cpp
+)
+target_include_directories(arm-controller-ik PRIVATE src)
+target_link_libraries(arm-controller-ik PRIVATE ik-solver)

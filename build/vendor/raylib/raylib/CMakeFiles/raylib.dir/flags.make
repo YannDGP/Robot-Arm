@@ -6,5 +6,5 @@ C_DEFINES = -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP -D_GLFW_X11
 
 C_INCLUDES = -I"/mnt/steamusb/Projet C++/robot-arm/vendor/raylib/src" -isystem "/mnt/steamusb/Projet C++/robot-arm/vendor/raylib/src/external/glfw/include"
 
-C_FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -O3 -DNDEBUG -std=gnu99
+C_FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -std=gnu99
 

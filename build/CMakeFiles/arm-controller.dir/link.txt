@@ -1,1 +1,0 @@
-/usr/bin/c++ -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/arm-controller.dir/link.d "CMakeFiles/arm-controller.dir/src/controller/main.cpp.o" -o arm-controller

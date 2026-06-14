@@ -17,11 +17,17 @@ This architecture mirrors how ROS2 nodes communicate using decoupled processes e
 
 ```
 src/
-├── Arm.hpp / Arm.cpp          — kinematics (GLM 4x4 matrices, forward kinematics)
+├── Arm.hpp                    — kinematics (GLM 4x4 matrices, forward kinematics)
+├── Arm.cpp
 ├── Pipe.hpp                   — shared IPC message structure
 ├── main.cpp                   — raylib renderer + pipe reader
 └── controller/
-    └── main.cpp               — motion sequences
+    └── main.cpp               — motion sequences (Angles)
+├── IKSolver.hpp               — kinematics (Damped Least Squares, inverse kinematics)
+├── IKSolver.cpp               
+└── controller-ik/
+    └── main.cpp               — motion sequences (Targets)
+
 vendor/
 ├── raylib/                    — 3D rendering (compiled with the project)
 └── glm/                       — math library (header-only)
@@ -31,7 +37,9 @@ vendor/
 
 ### Kinematics
 
-Each joint holds a rotation (rx, ry) and a segment length. `jointPositions()` builds a chain of 4×4 transformation matrices, one per joint, multiplying them together from base to end effector. Each matrix encodes the cumulative rotation and translation up to that point, so joint 2 automatically inherits the orientation of joints 0 and 1. This is standard forward kinematics (FK).
+- **Forward Kinematics (FK):** Each joint holds a rotation (rx, ry) and a segment length. `jointPositions()` builds a chain of 4×4 transformation matrices, one per joint, multiplying them together from base to end effector. Each matrix encodes the cumulative rotation and translation up to that point, so joint 2 automatically inherits the orientation of joints 0 and 1.
+
+- **Inverse Kinematics (IK):** The `IKSolver` implements a **Damped Least Squares (DLS)** algorithm. Given a 3D target position `(x, y, z)` in world space, it iteratively adjusts the joint angles to minimize the distance to the target. The damping factor ensures mathematical stability near singularities (e.g., when the arm is fully extended or collapsed).
 
 ### IPC
 
@@ -72,18 +80,22 @@ In two separate terminals:
 # Terminal 1 — start renderer first
 ./build/robot-arm
 
-# Terminal 2 — start controller
-./build/arm-controller
+# Terminal 2 — start controller for Angles
+./build/arm-controller-angles
+
+# Terminal 2 — start controller for Inverse Kinetics
+./build/arm-controller-ik
+
 ```
 
 ## Controls
 
 | Input | Action |
 |-------|--------|
-| Hold `Shift` | Free camera (right-click + drag) |
+| Hold `Shift` | Free camera (right-click + drag) For mouvement WASD/ZQSD) |
 | `ESC` | Quit |
 
-## Writing motion sequences
+## Writing motion sequences (controller-angles)
 
 In `src/controller/main.cpp`, each `send()` defines a target position:
 
@@ -98,3 +110,14 @@ send(fd,   0.0f,   0.0f,    0.0f,  0.0f,    0.0f,  0.0f,   1000);
 - `ms` — time before next command in milliseconds
 
 Rotations are relative to the parent joint. The renderer interpolates smoothly to each target.
+
+Voici le bloc complet mis à jour pour la section de l'Inverse Kinematics, rédigé exactement avec la même structure et le même style de commentaires et d'explications que ton bloc pour la Forward Kinematics :
+Markdown
+
+### Inverse Kinematics (controller-ik)
+
+In `src/controller-ik/main.cpp`, each `moveTo()` defines a target position in world space:
+
+```cpp
+//           x      y      z     ms
+moveTo(fd,  4.0f,  2.5f,  0.0f, 1500);

@@ -195,17 +195,43 @@ robot-arm/fast:
 .PHONY : robot-arm/fast
 
 #=============================================================================
-# Target rules for targets named arm-controller
+# Target rules for targets named arm-controller-angles
 
 # Build rule for target.
-arm-controller: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 arm-controller
-.PHONY : arm-controller
+arm-controller-angles: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 arm-controller-angles
+.PHONY : arm-controller-angles
 
 # fast build rule for target.
-arm-controller/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm-controller.dir/build.make CMakeFiles/arm-controller.dir/build
-.PHONY : arm-controller/fast
+arm-controller-angles/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm-controller-angles.dir/build.make CMakeFiles/arm-controller-angles.dir/build
+.PHONY : arm-controller-angles/fast
+
+#=============================================================================
+# Target rules for targets named ik-solver
+
+# Build rule for target.
+ik-solver: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ik-solver
+.PHONY : ik-solver
+
+# fast build rule for target.
+ik-solver/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ik-solver.dir/build.make CMakeFiles/ik-solver.dir/build
+.PHONY : ik-solver/fast
+
+#=============================================================================
+# Target rules for targets named arm-controller-ik
+
+# Build rule for target.
+arm-controller-ik: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 arm-controller-ik
+.PHONY : arm-controller-ik
+
+# fast build rule for target.
+arm-controller-ik/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm-controller-ik.dir/build.make CMakeFiles/arm-controller-ik.dir/build
+.PHONY : arm-controller-ik/fast
 
 #=============================================================================
 # Target rules for targets named raylib
@@ -283,12 +309,60 @@ src/Arm.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/robot-arm.dir/build.make CMakeFiles/robot-arm.dir/src/Arm.cpp.s
 .PHONY : src/Arm.cpp.s
 
+src/IKSolver.o: src/IKSolver.cpp.o
+.PHONY : src/IKSolver.o
+
+# target to build an object file
+src/IKSolver.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ik-solver.dir/build.make CMakeFiles/ik-solver.dir/src/IKSolver.cpp.o
+.PHONY : src/IKSolver.cpp.o
+
+src/IKSolver.i: src/IKSolver.cpp.i
+.PHONY : src/IKSolver.i
+
+# target to preprocess a source file
+src/IKSolver.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ik-solver.dir/build.make CMakeFiles/ik-solver.dir/src/IKSolver.cpp.i
+.PHONY : src/IKSolver.cpp.i
+
+src/IKSolver.s: src/IKSolver.cpp.s
+.PHONY : src/IKSolver.s
+
+# target to generate assembly for a file
+src/IKSolver.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ik-solver.dir/build.make CMakeFiles/ik-solver.dir/src/IKSolver.cpp.s
+.PHONY : src/IKSolver.cpp.s
+
+src/controller-ik/main.o: src/controller-ik/main.cpp.o
+.PHONY : src/controller-ik/main.o
+
+# target to build an object file
+src/controller-ik/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm-controller-ik.dir/build.make CMakeFiles/arm-controller-ik.dir/src/controller-ik/main.cpp.o
+.PHONY : src/controller-ik/main.cpp.o
+
+src/controller-ik/main.i: src/controller-ik/main.cpp.i
+.PHONY : src/controller-ik/main.i
+
+# target to preprocess a source file
+src/controller-ik/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm-controller-ik.dir/build.make CMakeFiles/arm-controller-ik.dir/src/controller-ik/main.cpp.i
+.PHONY : src/controller-ik/main.cpp.i
+
+src/controller-ik/main.s: src/controller-ik/main.cpp.s
+.PHONY : src/controller-ik/main.s
+
+# target to generate assembly for a file
+src/controller-ik/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm-controller-ik.dir/build.make CMakeFiles/arm-controller-ik.dir/src/controller-ik/main.cpp.s
+.PHONY : src/controller-ik/main.cpp.s
+
 src/controller/main.o: src/controller/main.cpp.o
 .PHONY : src/controller/main.o
 
 # target to build an object file
 src/controller/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm-controller.dir/build.make CMakeFiles/arm-controller.dir/src/controller/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm-controller-angles.dir/build.make CMakeFiles/arm-controller-angles.dir/src/controller/main.cpp.o
 .PHONY : src/controller/main.cpp.o
 
 src/controller/main.i: src/controller/main.cpp.i
@@ -296,7 +370,7 @@ src/controller/main.i: src/controller/main.cpp.i
 
 # target to preprocess a source file
 src/controller/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm-controller.dir/build.make CMakeFiles/arm-controller.dir/src/controller/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm-controller-angles.dir/build.make CMakeFiles/arm-controller-angles.dir/src/controller/main.cpp.i
 .PHONY : src/controller/main.cpp.i
 
 src/controller/main.s: src/controller/main.cpp.s
@@ -304,7 +378,7 @@ src/controller/main.s: src/controller/main.cpp.s
 
 # target to generate assembly for a file
 src/controller/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm-controller.dir/build.make CMakeFiles/arm-controller.dir/src/controller/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/arm-controller-angles.dir/build.make CMakeFiles/arm-controller-angles.dir/src/controller/main.cpp.s
 .PHONY : src/controller/main.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -346,14 +420,22 @@ help:
 	@echo "... package_source"
 	@echo "... rebuild_cache"
 	@echo "... update_mappings"
-	@echo "... arm-controller"
+	@echo "... arm-controller-angles"
+	@echo "... arm-controller-ik"
 	@echo "... glfw"
 	@echo "... glm"
+	@echo "... ik-solver"
 	@echo "... raylib"
 	@echo "... robot-arm"
 	@echo "... src/Arm.o"
 	@echo "... src/Arm.i"
 	@echo "... src/Arm.s"
+	@echo "... src/IKSolver.o"
+	@echo "... src/IKSolver.i"
+	@echo "... src/IKSolver.s"
+	@echo "... src/controller-ik/main.o"
+	@echo "... src/controller-ik/main.i"
+	@echo "... src/controller-ik/main.s"
 	@echo "... src/controller/main.o"
 	@echo "... src/controller/main.i"
 	@echo "... src/controller/main.s"

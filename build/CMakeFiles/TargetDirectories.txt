@@ -1,5 +1,7 @@
 /mnt/steamusb/Projet C++/robot-arm/build/CMakeFiles/robot-arm.dir
-/mnt/steamusb/Projet C++/robot-arm/build/CMakeFiles/arm-controller.dir
+/mnt/steamusb/Projet C++/robot-arm/build/CMakeFiles/arm-controller-angles.dir
+/mnt/steamusb/Projet C++/robot-arm/build/CMakeFiles/ik-solver.dir
+/mnt/steamusb/Projet C++/robot-arm/build/CMakeFiles/arm-controller-ik.dir
 /mnt/steamusb/Projet C++/robot-arm/build/CMakeFiles/package.dir
 /mnt/steamusb/Projet C++/robot-arm/build/CMakeFiles/package_source.dir
 /mnt/steamusb/Projet C++/robot-arm/build/CMakeFiles/edit_cache.dir

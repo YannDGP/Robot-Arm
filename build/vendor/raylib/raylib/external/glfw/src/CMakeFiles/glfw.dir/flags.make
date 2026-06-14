@@ -6,5 +6,5 @@ C_DEFINES = -D_DEFAULT_SOURCE -D_GLFW_X11
 
 C_INCLUDES = -I"/mnt/steamusb/Projet C++/robot-arm/vendor/raylib/src/external/glfw/include" -I"/mnt/steamusb/Projet C++/robot-arm/vendor/raylib/src/external/glfw/src" -I"/mnt/steamusb/Projet C++/robot-arm/build/vendor/raylib/raylib/external/glfw/src"
 
-C_FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -O3 -DNDEBUG -std=c99 -fPIC -Wall
+C_FLAGS = -fno-strict-aliasing -Werror=implicit-function-declaration -Werror=pointer-arith  -std=c99 -fPIC -Wall
 
